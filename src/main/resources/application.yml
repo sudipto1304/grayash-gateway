@@ -1,0 +1,45 @@
+zuul:
+  prefix: /api
+  ignored-services: '*'
+  routes:
+    manageuser:
+      path: /ManageUser/**
+      serviceId: MANAGE-USER
+ribbon:
+  eureka:
+    enabled: false
+server:
+  port: ${PORT:8905}
+MANAGE-USER:
+  ribbon:
+    listOfServers: 127.0.0.1:8906
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 12000
+spring:
+  security:
+    authentication:
+      jwt:
+        secret: 725e76e5-cd25-4b8a-8b57-96cb4fb356f6
+  application:
+    name: ZULL-GATEWAY
+  zipkin:
+    base-url: http://localhost:8903/
+  datasource:
+    url: jdbc:mysql://localhost:3306/poolcardb?autoReconnect=true&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+    username: pcadmin
+    password: Antaheen4813
+    tomcat:
+      max-active: 30
+      max-idle: 15
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  jmx:
+    default-domain: ${spring.application.name}
