@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 @EnableZuulProxy
-@RestController
 public class GrayashGatewayApplication {
 
 	public static void main(String[] args) {

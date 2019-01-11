@@ -7,3 +7,4 @@
 .project
 .settings/org.eclipse.buildship.core.prefs
 .settings/org.springframework.ide.eclipse.prefs
+*.class
